@@ -1,11 +1,18 @@
 {
-    "[javascript]": {
+    "[javascript][typescript]": {
         "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+        "editor.formatOnPaste": false,
+        "editor.formatOnSave": true,
+        "editor.formatOnType": false,
+        "editor.formatOnSaveMode": "modificationsIfAvailable",
         "editor.codeActionsOnSave": {
             "source.fixAll.eslint": "explicit",
             "source.fixAll": "explicit",
             "source.organizeImports": "always"
         }
     },
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": false,
+    "editor.formatOnType": false,
     "editor.formatOnSaveMode": "modificationsIfAvailable"
 }

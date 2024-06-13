@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { CookieHandlerDevtools } from '../devtools/cookieHandlerDevtools.js';
 import { AdHandler } from '../lib/ads/adHandler.js';
 import { Animate } from '../lib/animate.js';

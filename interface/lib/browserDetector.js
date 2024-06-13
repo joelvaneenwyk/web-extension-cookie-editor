@@ -18,6 +18,7 @@ export class BrowserDetector {
       this.supportPromises =
         this.namespace.runtime.getPlatformInfo() instanceof Promise;
       console.info('Promises support: ', this.supportPromises);
+      // eslint-disable-next-line no-unused-vars
     } catch (e) {
       /* empty */
     }
@@ -25,6 +26,7 @@ export class BrowserDetector {
     try {
       this.supportSidePanel = typeof this.getApi().sidePanel !== 'undefined';
       console.info('SidePanel support: ', this.supportSidePanel);
+      // eslint-disable-next-line no-unused-vars
     } catch (e) {
       /* empty */
     }

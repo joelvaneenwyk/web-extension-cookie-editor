@@ -16,14 +16,13 @@ import { OptionsHandler } from '../lib/optionsHandler.js';
    * Creates the devtools panel.
    */
   function createDevtools() {
-    browserDetector
-      .getApi()
-      .devtools.panels.create(
-        'Cookie-Editor',
-        '/icons/cookie-filled-small.svg',
-        '/interface/devtools/cookie-list.html',
-        function (panel) {},
-      );
+    browserDetector.getApi().devtools.panels.create(
+      'Cookie-Editor',
+      '/icons/cookie-filled-small.svg',
+      '/interface/devtools/cookie-list.html',
+      // eslint-disable-next-line no-unused-vars
+      function (panel) {},
+    );
   }
 
   /**

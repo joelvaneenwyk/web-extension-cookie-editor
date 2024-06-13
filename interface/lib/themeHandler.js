@@ -13,6 +13,7 @@ export class ThemeHandler {
     optionHandler.on('optionsChanged', this.onOptionsChanged);
     window
       .matchMedia('(prefers-color-scheme: dark)')
+      // eslint-disable-next-line no-unused-vars
       .addEventListener('change', (event) => {
         console.log('theme changed!');
         this.updateTheme();

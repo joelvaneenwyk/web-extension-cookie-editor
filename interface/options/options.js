@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { BrowserDetector } from '../lib/browserDetector.js';
 import { Cookie } from '../lib/cookie.js';
 import { GenericStorageHandler } from '../lib/genericStorageHandler.js';

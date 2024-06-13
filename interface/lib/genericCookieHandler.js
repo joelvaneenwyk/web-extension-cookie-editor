@@ -101,6 +101,7 @@ export class GenericCookieHandler extends EventEmitter {
         .getApi()
         .cookies.set(cookie)
         .then(
+          // eslint-disable-next-line no-unused-vars
           (cookie, a, b, c) => {
             if (callback) {
               callback(null, cookie);
