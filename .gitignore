@@ -1,8 +1,9 @@
-/.idea/*
-manifest.json
-build/*
-dist/*
-node_modules
+/.idea/
+/build/
+/dist/
+/node_modules/
+
+/manifest.json
 
 ## User settings
 xcuserdata/
