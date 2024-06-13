@@ -2,6 +2,7 @@ import { Browsers } from '../browsers.js';
 import { ActiveAds } from './activeAds.js';
 
 const secondsInOneDay = Object.freeze(1 * 24 * 60 * 60 * 1000);
+const allowAds = false;
 
 /**
  * class used to handle all the ad logic.
@@ -83,6 +84,10 @@ export class AdHandler {
    * @param {function} callback
    */
   async canShowAnyAd() {
+    if (!allowAds) {
+      return false;
+    }
+
     if (ActiveAds.length === 0) {
       return false;
     }
