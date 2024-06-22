@@ -9,7 +9,7 @@ setlocal EnableDelayedExpansion
     call npm run build
     if errorlevel 1 goto:$MainError
 
-    call pwsh -File .\build.ps1 %*
+    call "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -File "%~dp0build.ps1" %*
     if errorlevel 1 goto:$MainError
     goto:$MainEnd
 

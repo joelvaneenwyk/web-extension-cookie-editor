@@ -19,7 +19,6 @@ Compress-Archive -LiteralPath `
     -Force `
     -DestinationPath build/build-chrome.zip
 
-
 # Firefox
 Copy-Item "manifest.firefox.json" -Destination "manifest.json"
 Compress-Archive -LiteralPath `
