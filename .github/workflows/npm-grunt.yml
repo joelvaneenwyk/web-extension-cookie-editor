@@ -52,8 +52,8 @@ jobs:
       - uses: actions/setup-node@v4
         name: Setup Node.js
         with:
-          node-version: lts
-          cache: 'npm'
+          node-version: current
+          cache: npm
 
       - name: Package
         run: pwsh -NoProfile -File ./build.ps1
