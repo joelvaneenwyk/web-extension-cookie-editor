@@ -34,3 +34,26 @@ jobs:
 
       - name: Build
         run: npm run build
+
+  package:
+    needs: build
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        name: Setup Node.js
+        with:
+          node-version: lts
+          cache: 'npm'
+
+      - name: Package
+        run: pwsh -NoProfile -File ./build.ps1

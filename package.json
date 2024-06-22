@@ -16,6 +16,8 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.4.0",
+    "@types/eslint__js": "^8.42.3",
+    "@types/eslint-config-prettier": "^6.11.3",
     "eslint": "^9.4.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
