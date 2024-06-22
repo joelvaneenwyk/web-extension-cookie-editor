@@ -10,7 +10,8 @@
   "scripts": {
     "build": "grunt",
     "lint": "eslint .",
-    "format": "eslint --fix ."
+    "format": "eslint --fix .",
+    "package": "npm run build && pwsh -NoProfile -File ./build.ps1 && npm run format"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",

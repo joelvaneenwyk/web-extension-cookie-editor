@@ -52,8 +52,14 @@
   "options_ui": {
     "page": "interface/options/options.html"
   },
-  "permissions": ["cookies", "tabs", "storage"],
-  "host_permissions": ["<all_urls>"],
+  "permissions": [
+    "cookies",
+    "tabs",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
   "icons": {
     "16": "icons/cookie-filled-small.svg",
     "19": "icons/cookie-filled-small.svg",
