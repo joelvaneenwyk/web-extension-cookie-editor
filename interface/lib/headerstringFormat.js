@@ -23,7 +23,7 @@ export class HeaderstringFormat {
       }
       cookies.push({
         name: cookieParts[0],
-        value: cookieParts[1],
+        value: cookieParts[1]
       });
     }
 

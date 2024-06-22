@@ -4,5 +4,5 @@ export const Browsers = Object.freeze({
   Edge: 'edge',
   Firefox: 'firefox',
   Opera: 'opera',
-  Safari: 'safari',
+  Safari: 'safari'
 });

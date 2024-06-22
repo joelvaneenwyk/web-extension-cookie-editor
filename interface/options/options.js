@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { BrowserDetector } from '../lib/browserDetector.js';
 import { Cookie } from '../lib/cookie.js';
 import { GenericStorageHandler } from '../lib/genericStorageHandler.js';
@@ -47,9 +46,7 @@ document.addEventListener('DOMContentLoaded', async (event) => {
     adsEnabledInput.checked = optionHandler.getAdsEnabled();
 
     if (!browserDetector.isSafari()) {
-      document
-        .querySelectorAll('.github-sponsor')
-        .forEach((el) => el.classList.remove('hidden'));
+      document.querySelectorAll('.github-sponsor').forEach((el) => el.classList.remove('hidden'));
     }
   }
 
@@ -108,31 +105,24 @@ document.addEventListener('DOMContentLoaded', async (event) => {
       optionHandler.setAdsEnabled(adsEnabledInput.checked);
     });
 
-    document
-      .getElementById('delete-all')
-      .addEventListener('click', async (event) => {
-        await deleteAllCookies();
-      });
+    document.getElementById('delete-all').addEventListener('click', async (event) => {
+      await deleteAllCookies();
+    });
 
-    document
-      .getElementById('export-all-json')
-      .addEventListener('click', async (event) => {
-        await exportCookiesAsJson();
-      });
+    document.getElementById('export-all-json').addEventListener('click', async (event) => {
+      await exportCookiesAsJson();
+    });
 
-    document
-      .getElementById('export-all-netscape')
-      .addEventListener('click', async (event) => {
-        await exportCookiesAsNetscape();
-      });
+    document.getElementById('export-all-netscape').addEventListener('click', async (event) => {
+      await exportCookiesAsNetscape();
+    });
   }
 
   /**
    * Get permissions for All urls.
    */
   async function getAllPermissions() {
-    const hasPermissions =
-      await permissionHandler.checkPermissions('<all_urls>');
+    const hasPermissions = await permissionHandler.checkPermissions('<all_urls>');
     if (!hasPermissions) {
       await permissionHandler.requestPermission('<all_urls>');
     }
@@ -159,9 +149,7 @@ document.addEventListener('DOMContentLoaded', async (event) => {
    * Delete all cookies.
    */
   async function deleteAllCookies() {
-    const deleteAll = confirm(
-      'Are you sure you want to delete ALL your cookies?',
-    );
+    const deleteAll = confirm('Are you sure you want to delete ALL your cookies?');
     if (!deleteAll) {
       return;
     }

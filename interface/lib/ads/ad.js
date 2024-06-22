@@ -16,16 +16,7 @@ export class Ad {
    * @param {int|null} endDate Timestamp Date after which the ad will no
    *     longer show to any user.
    */
-  constructor({
-    id,
-    text,
-    tooltip,
-    url,
-    supportedBrowsers,
-    refreshDays,
-    startDate,
-    endDate,
-  }) {
+  constructor({ id, text, tooltip, url, supportedBrowsers, refreshDays, startDate, endDate }) {
     this.id = id;
     this.text = text;
     this.tooltip = tooltip;

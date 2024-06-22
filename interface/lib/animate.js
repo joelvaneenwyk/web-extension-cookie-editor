@@ -33,8 +33,8 @@ export class Animate {
         }, 10);
       },
       {
-        once: true,
-      },
+        once: true
+      }
     );
 
     if (el.getAttribute('data-max-height')) {
@@ -84,8 +84,8 @@ export class Animate {
           callback();
         },
         {
-          once: true,
-        },
+          once: true
+        }
       );
     }
     const elMaxHeight = this.getHeight(el, true) + 'px';
@@ -118,7 +118,7 @@ export class Animate {
     newPage,
     direction = 'left',
     callback = null,
-    animationsEnabled = true,
+    animationsEnabled = true
   ) {
     if (!animationsEnabled) {
       if (oldPage) {
@@ -146,8 +146,8 @@ export class Animate {
       },
       {
         passive: true,
-        once: true,
-      },
+        once: true
+      }
     );
 
     container.style.overflowY = 'hidden';

@@ -8,19 +8,13 @@ export const ActiveAds = Object.freeze([
   new Ad({
     id: 'cookie-editor',
     text: 'Enjoying Cookie-Editor? Buy me a coffee!',
-    tooltip:
-      'Cookie-Editor is always free. Help its development by sponsoring me.',
+    tooltip: 'Cookie-Editor is always free. Help its development by sponsoring me.',
     url: 'https://github.com/sponsors/Moustachauve',
     // Apple doesn't allow Github sponsors (external payment)
-    supportedBrowsers: [
-      Browsers.Chrome,
-      Browsers.Edge,
-      Browsers.Firefox,
-      Browsers.Opera,
-    ],
+    supportedBrowsers: [Browsers.Chrome, Browsers.Edge, Browsers.Firefox, Browsers.Opera],
     refreshDays: 80,
     startDate: null,
-    endDate: null,
+    endDate: null
   }),
 
   new Ad({
@@ -32,7 +26,7 @@ export const ActiveAds = Object.freeze([
     supportedBrowsers: [Browsers.Chrome, Browsers.Edge, Browsers.Safari],
     refreshDays: 90,
     startDate: new Date('2023/09/01'),
-    endDate: new Date('2024/02/29'),
+    endDate: new Date('2024/02/29')
   }),
 
   new Ad({
@@ -44,7 +38,7 @@ export const ActiveAds = Object.freeze([
     supportedBrowsers: [Browsers.Chrome, Browsers.Edge, Browsers.Safari],
     refreshDays: 90,
     startDate: new Date('2023/04/01'),
-    endDate: new Date('2025/09/01'),
+    endDate: new Date('2025/09/01')
   }),
 
   new Ad({
@@ -55,7 +49,7 @@ export const ActiveAds = Object.freeze([
     supportedBrowsers: Browsers.Any,
     refreshDays: 110,
     startDate: new Date('2023/10/21'),
-    endDate: new Date('2025/05/01'),
+    endDate: new Date('2025/05/01')
   }),
 
   new Ad({
@@ -67,7 +61,7 @@ export const ActiveAds = Object.freeze([
     supportedBrowsers: Browsers.Any,
     refreshDays: 120,
     startDate: new Date('2023/11/15'),
-    endDate: new Date('2024/03/15'),
+    endDate: new Date('2024/03/15')
   }),
 
   new Ad({
@@ -79,7 +73,7 @@ export const ActiveAds = Object.freeze([
     supportedBrowsers: Browsers.Any,
     refreshDays: 120,
     startDate: new Date('2024/03/16'),
-    endDate: new Date('2024/12/31'),
+    endDate: new Date('2024/12/31')
   }),
 
   new Ad({
@@ -91,7 +85,7 @@ export const ActiveAds = Object.freeze([
     supportedBrowsers: Browsers.Any,
     refreshDays: 130,
     startDate: new Date('2023/10/07'),
-    endDate: new Date('2025/02/01'),
+    endDate: new Date('2025/02/01')
   }),
 
   new Ad({
@@ -103,7 +97,7 @@ export const ActiveAds = Object.freeze([
     supportedBrowsers: Browsers.Any,
     refreshDays: 140,
     startDate: new Date('2023/10/07'),
-    endDate: new Date('2024/12/01'),
+    endDate: new Date('2024/12/01')
   }),
 
   new Ad({
@@ -115,7 +109,7 @@ export const ActiveAds = Object.freeze([
     supportedBrowsers: Browsers.Any,
     refreshDays: 140,
     startDate: new Date('2024/03/07'),
-    endDate: new Date('2024/12/01'),
+    endDate: new Date('2024/12/01')
   }),
 
   new Ad({
@@ -126,7 +120,7 @@ export const ActiveAds = Object.freeze([
     supportedBrowsers: Browsers.Any,
     refreshDays: 130,
     startDate: new Date('2024/03/14'),
-    endDate: new Date('2025/03/14'),
+    endDate: new Date('2025/03/14')
   }),
 
   new Ad({
@@ -137,6 +131,6 @@ export const ActiveAds = Object.freeze([
     supportedBrowsers: Browsers.Any,
     refreshDays: 100,
     startDate: new Date('2024/03/14'),
-    endDate: new Date('2025/03/14'),
-  }),
+    endDate: new Date('2025/03/14')
+  })
 ]);

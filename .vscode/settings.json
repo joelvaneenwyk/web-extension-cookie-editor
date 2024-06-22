@@ -8,11 +8,12 @@
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "explicit",
       "source.fixAll": "explicit",
-      "source.organizeImports": "always"
+      "source.organizeImports": "explicit"
     }
   },
+  "prettier.enable": false,
   "editor.formatOnPaste": false,
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "editor.formatOnType": false,
   "editor.formatOnSaveMode": "modificationsIfAvailable"
 }

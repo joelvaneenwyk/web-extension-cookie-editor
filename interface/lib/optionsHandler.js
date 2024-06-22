@@ -30,7 +30,7 @@ export class OptionsHandler extends EventEmitter {
       .runtime.connect({ name: this.guid });
     this.backgroundPageConnection.onMessage.addListener(this.onMessage);
     this.backgroundPageConnection.postMessage({
-      type: 'init_optionsHandler',
+      type: 'init_optionsHandler'
     });
   }
 
@@ -93,10 +93,7 @@ export class OptionsHandler extends EventEmitter {
   getExportFormat() {
     let exportFormat = this.options.exportFormat;
     if (!this.isExportFormatValid(exportFormat)) {
-      console.error(
-        "Tried to load an exportFormat that doesn't exists",
-        exportFormat,
-      );
+      console.error("Tried to load an exportFormat that doesn't exists", exportFormat);
       exportFormat = ExportFormats.Ask;
       this.setExportFormat(exportFormat);
     }
@@ -108,10 +105,7 @@ export class OptionsHandler extends EventEmitter {
    */
   setExportFormat(exportFormat) {
     if (!this.isExportFormatValid(exportFormat)) {
-      console.error(
-        "Tried to save an exportFormat that doesn't exists",
-        exportFormat,
-      );
+      console.error("Tried to save an exportFormat that doesn't exists", exportFormat);
       return;
     }
     this.options.exportFormat = exportFormat;
@@ -140,10 +134,7 @@ export class OptionsHandler extends EventEmitter {
   getExtraInfo() {
     let extraInfo = this.options.extraInfo;
     if (!this.isExtraInfoValid(extraInfo)) {
-      console.error(
-        "Tried to load an extraInfo that doesn't exists",
-        extraInfo,
-      );
+      console.error("Tried to load an extraInfo that doesn't exists", extraInfo);
       extraInfo = ExtraInfos.Nothing;
       this.setExtraInfo(extraInfo);
     }
@@ -155,10 +146,7 @@ export class OptionsHandler extends EventEmitter {
    */
   setExtraInfo(extraInfo) {
     if (!this.isExtraInfoValid(extraInfo)) {
-      console.error(
-        "Tried to save an extraInfo that doesn't exists",
-        extraInfo,
-      );
+      console.error("Tried to save an extraInfo that doesn't exists", extraInfo);
       return;
     }
     this.options.extraInfo = extraInfo;
@@ -300,9 +288,7 @@ export class OptionsHandler extends EventEmitter {
         .runtime.sendMessage({ type: type, params: params })
         .then(callback, errorCallback);
     } else {
-      this.browserDetector
-        .getApi()
-        .runtime.sendMessage({ type: type, params: params }, callback);
+      this.browserDetector.getApi().runtime.sendMessage({ type: type, params: params }, callback);
     }
   }
 
@@ -311,9 +297,7 @@ export class OptionsHandler extends EventEmitter {
    * @param {object} request
    */
   onMessage = async (request) => {
-    console.log(
-      '[options] background message received: ' + (request.type || 'unknown'),
-    );
+    console.log('[options] background message received: ' + (request.type || 'unknown'));
     switch (request.type) {
       case 'optionsChanged': {
         if (request.data.from == this.guid) {

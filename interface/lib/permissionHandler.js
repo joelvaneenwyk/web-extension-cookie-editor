@@ -15,7 +15,7 @@ export class PermissionHandler {
       'chrome:',
       'chrome-extension:',
       'edge:',
-      'safari-web-extension:',
+      'safari-web-extension:'
     ];
   }
 
@@ -47,15 +47,12 @@ export class PermissionHandler {
    */
   async checkPermissions(url) {
     const testPermission = {
-      origins: [url],
+      origins: [url]
     };
     try {
       const { protocol, hostname } = new URL(url);
       const rootDomain = this.getRootDomainName(hostname);
-      testPermission.origins = [
-        `${protocol}//${hostname}/*`,
-        `${protocol}//*.${rootDomain}/*`,
-      ];
+      testPermission.origins = [`${protocol}//${hostname}/*`, `${protocol}//*.${rootDomain}/*`];
     } catch (err) {
       console.error(err);
     }
@@ -66,9 +63,7 @@ export class PermissionHandler {
       return true;
     }
 
-    return await this.browserDetector
-      .getApi()
-      .permissions.contains(testPermission);
+    return await this.browserDetector.getApi().permissions.contains(testPermission);
   }
 
   /**
@@ -78,15 +73,12 @@ export class PermissionHandler {
    */
   async requestPermission(url) {
     const permission = {
-      origins: [url],
+      origins: [url]
     };
     try {
       const { protocol, hostname } = new URL(url);
       const rootDomain = this.getRootDomainName(hostname);
-      permission.origins = [
-        `${protocol}//${hostname}/*`,
-        `${protocol}//*.${rootDomain}/*`,
-      ];
+      permission.origins = [`${protocol}//${hostname}/*`, `${protocol}//*.${rootDomain}/*`];
     } catch (err) {
       console.error(err);
     }

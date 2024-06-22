@@ -29,7 +29,7 @@ export class CookieHandlerDevtools extends GenericCookieHandler {
     this.backgroundPageConnection.onMessage.addListener(this.onMessage);
     this.backgroundPageConnection.postMessage({
       type: 'init_cookieHandler',
-      tabId: this.browserDetector.getApi().devtools.inspectedWindow.tabId,
+      tabId: this.browserDetector.getApi().devtools.inspectedWindow.tabId
     });
 
     console.log('Devtool ready');
@@ -46,9 +46,9 @@ export class CookieHandlerDevtools extends GenericCookieHandler {
       'getAllCookies',
       {
         url: this.currentTab.url,
-        storeId: this.currentTab.cookieStoreId,
+        storeId: this.currentTab.cookieStoreId
       },
-      callback,
+      callback
     );
   }
 
@@ -60,11 +60,7 @@ export class CookieHandlerDevtools extends GenericCookieHandler {
    * @param {function} callback
    */
   saveCookie(cookie, url, callback) {
-    this.sendMessage(
-      'saveCookie',
-      { cookie: this.prepareCookie(cookie, url) },
-      callback,
-    );
+    this.sendMessage('saveCookie', { cookie: this.prepareCookie(cookie, url) }, callback);
   }
 
   /**
@@ -79,9 +75,9 @@ export class CookieHandlerDevtools extends GenericCookieHandler {
       {
         name: name,
         url: url,
-        storeId: this.currentTab.cookieStoreId,
+        storeId: this.currentTab.cookieStoreId
       },
-      callback,
+      callback
     );
   }
 
@@ -90,10 +86,7 @@ export class CookieHandlerDevtools extends GenericCookieHandler {
    * @param {object} request
    */
   onMessage = (request) => {
-    console.log(
-      '[cookieHandler] background message received: ' +
-        (request.type || 'unknown'),
-    );
+    console.log('[cookieHandler] background message received: ' + (request.type || 'unknown'));
     switch (request.type) {
       case 'cookiesChanged':
         this.onCookiesChanged(request.data);
@@ -140,8 +133,7 @@ export class CookieHandlerDevtools extends GenericCookieHandler {
       null,
       function (tabInfo) {
         const newTab =
-          tabInfo[0].id !== self.currentTabId ||
-          tabInfo[0].url !== self.currentTab.url;
+          tabInfo[0].id !== self.currentTabId || tabInfo[0].url !== self.currentTab.url;
         self.currentTabId = tabInfo[0].id;
         self.currentTab = tabInfo[0];
         if (newTab && self.isReady) {
@@ -153,7 +145,7 @@ export class CookieHandlerDevtools extends GenericCookieHandler {
       },
       function (e) {
         console.log('failed to update current tab', e);
-      },
+      }
     );
   };
 
@@ -171,9 +163,7 @@ export class CookieHandlerDevtools extends GenericCookieHandler {
         .runtime.sendMessage({ type: type, params: params })
         .then(callback, errorCallback);
     } else {
-      this.browserDetector
-        .getApi()
-        .runtime.sendMessage({ type: type, params: params }, callback);
+      this.browserDetector.getApi().runtime.sendMessage({ type: type, params: params }, callback);
     }
   }
 }

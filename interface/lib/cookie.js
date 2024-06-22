@@ -52,36 +52,16 @@ export class Cookie {
     }
     this.cookie = cookie;
 
-    const oldCookieName = this.baseHtml.querySelector(
-      '#name-' + this.guid,
-    ).value;
-    const oldCookieValue = this.baseHtml.querySelector(
-      '#value-' + this.guid,
-    ).value;
-    const oldCookieDomain = this.baseHtml.querySelector(
-      '#domain-' + this.guid,
-    ).value;
-    const oldCookiePath = this.baseHtml.querySelector(
-      '#path-' + this.guid,
-    ).value;
-    const oldCookieSameSite = this.baseHtml.querySelector(
-      '#sameSite-' + this.guid,
-    ).value;
-    const oldCookieHostOnly = this.baseHtml.querySelector(
-      '#hostOnly-' + this.guid,
-    ).checked;
-    const oldCookieSession = this.baseHtml.querySelector(
-      '#session-' + this.guid,
-    ).checked;
-    const oldCookieSecure = this.baseHtml.querySelector(
-      '#secure-' + this.guid,
-    ).checked;
-    const oldCookieHttpOnly = this.baseHtml.querySelector(
-      '#httpOnly-' + this.guid,
-    ).checked;
-    let oldCookieExpiration = this.baseHtml.querySelector(
-      '#expiration-' + this.guid,
-    ).value;
+    const oldCookieName = this.baseHtml.querySelector('#name-' + this.guid).value;
+    const oldCookieValue = this.baseHtml.querySelector('#value-' + this.guid).value;
+    const oldCookieDomain = this.baseHtml.querySelector('#domain-' + this.guid).value;
+    const oldCookiePath = this.baseHtml.querySelector('#path-' + this.guid).value;
+    const oldCookieSameSite = this.baseHtml.querySelector('#sameSite-' + this.guid).value;
+    const oldCookieHostOnly = this.baseHtml.querySelector('#hostOnly-' + this.guid).checked;
+    const oldCookieSession = this.baseHtml.querySelector('#session-' + this.guid).checked;
+    const oldCookieSecure = this.baseHtml.querySelector('#secure-' + this.guid).checked;
+    const oldCookieHttpOnly = this.baseHtml.querySelector('#httpOnly-' + this.guid).checked;
+    let oldCookieExpiration = this.baseHtml.querySelector('#expiration-' + this.guid).value;
     oldCookieExpiration = new Date(oldCookieExpiration).getTime() / 1000;
     if (isNaN(oldCookieExpiration)) {
       oldCookieExpiration = undefined;
@@ -125,10 +105,7 @@ export class Cookie {
    */
   generateHtml() {
     const self = this;
-    const template = document.importNode(
-      document.getElementById('tmp-cookie').content,
-      true,
-    );
+    const template = document.importNode(document.getElementById('tmp-cookie').content, true);
     this.baseHtml = template.querySelector('li');
     this.baseHtml.setAttribute('data-name', this.cookie.name);
     this.baseHtml.id = this.id;
@@ -369,17 +346,14 @@ export class Cookie {
    * @param {boolean} inputValue The value of the Session input.
    */
   afterSessionChanged(inputValue) {
-    const expirationInput = this.baseHtml.querySelector(
-      '#expiration-' + this.guid,
-    );
+    const expirationInput = this.baseHtml.querySelector('#expiration-' + this.guid);
     expirationInput.disabled = inputValue;
     if (inputValue) {
       expirationInput.value = 'No Expiration';
       return;
     }
     if (!this.cookie.expirationDate) {
-      this.cookie.expirationDate =
-        new Date(Date.now() + 1 * (60 * 60 * 1000)).getTime() / 1000;
+      this.cookie.expirationDate = new Date(Date.now() + 1 * (60 * 60 * 1000)).getTime() / 1000;
     }
     expirationInput.value = this.formatExpirationForDisplay();
   }
@@ -465,8 +439,8 @@ export class Cookie {
    * @return {string}
    */
   formatExpirationForDisplay() {
-    return this.cookie.expirationDate
-      ? new Date(this.cookie.expirationDate * 1000)
+    return this.cookie.expirationDate ?
+        new Date(this.cookie.expirationDate * 1000)
       : 'No Expiration';
   }
 
@@ -477,9 +451,7 @@ export class Cookie {
   formatExpirationForDisplayShort() {
     const date = new Date(this.cookie.expirationDate * 1000);
     date.setMilliseconds(0);
-    return this.cookie.expirationDate
-      ? date.toISOString().split('.')[0] + 'Z'
-      : 'No Expiration';
+    return this.cookie.expirationDate ? date.toISOString().split('.')[0] + 'Z' : 'No Expiration';
   }
 
   /**
@@ -511,19 +483,13 @@ export class Cookie {
       case ExtraInfos.Samesite:
         return this.cookie.sameSite;
       case ExtraInfos.Hostonly:
-        return this.formatBoolForDisplayShort(
-          'Host Only',
-          this.cookie.hostOnly,
-        );
+        return this.formatBoolForDisplayShort('Host Only', this.cookie.hostOnly);
       case ExtraInfos.Session:
         return this.formatBoolForDisplayShort('Session', this.cookie.session);
       case ExtraInfos.Secure:
         return this.formatBoolForDisplayShort('Secure', this.cookie.secure);
       case ExtraInfos.Httponly:
-        return this.formatBoolForDisplayShort(
-          'Http Only',
-          this.cookie.httpOnly,
-        );
+        return this.formatBoolForDisplayShort('Http Only', this.cookie.httpOnly);
       case ExtraInfos.Nothing:
       default:
         return '';

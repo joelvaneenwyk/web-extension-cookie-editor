@@ -8,5 +8,5 @@ export const ExtraInfos = Object.freeze({
   Hostonly: 'hostonly',
   Session: 'session',
   Secure: 'secure',
-  Httponly: 'httponly',
+  Httponly: 'httponly'
 });

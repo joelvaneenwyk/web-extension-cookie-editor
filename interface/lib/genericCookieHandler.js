@@ -25,7 +25,7 @@ export class GenericCookieHandler extends EventEmitter {
         .getApi()
         .cookies.getAll({
           url: this.currentTab.url,
-          storeId: this.currentTab.cookieStoreId,
+          storeId: this.currentTab.cookieStoreId
         })
         .then(callback, function (e) {
           console.error('Failed to retrieve cookies', e);
@@ -34,9 +34,9 @@ export class GenericCookieHandler extends EventEmitter {
       this.browserDetector.getApi().cookies.getAll(
         {
           url: this.currentTab.url,
-          storeId: this.currentTab.cookieStoreId,
+          storeId: this.currentTab.cookieStoreId
         },
-        callback,
+        callback
       );
     }
   }
@@ -57,7 +57,7 @@ export class GenericCookieHandler extends EventEmitter {
       httpOnly: cookie.httpOnly || null,
       expirationDate: cookie.expirationDate || null,
       storeId: cookie.storeId || this.currentTab.cookieStoreId || null,
-      url: url,
+      url: url
     };
 
     // Bad hack on safari because cookies needs to have the very exact same domain
@@ -69,10 +69,7 @@ export class GenericCookieHandler extends EventEmitter {
       newCookie.path = '/';
     }
 
-    if (
-      cookie.hostOnly ||
-      (this.browserDetector.isSafari() && !newCookie.domain)
-    ) {
+    if (cookie.hostOnly || (this.browserDetector.isSafari() && !newCookie.domain)) {
       newCookie.domain = null;
     }
 
@@ -101,7 +98,6 @@ export class GenericCookieHandler extends EventEmitter {
         .getApi()
         .cookies.set(cookie)
         .then(
-          // eslint-disable-next-line no-unused-vars
           (cookie, a, b, c) => {
             if (callback) {
               callback(null, cookie);
@@ -112,7 +108,7 @@ export class GenericCookieHandler extends EventEmitter {
             if (callback) {
               callback(error.message, null);
             }
-          },
+          }
         );
     } else {
       this.browserDetector.getApi().cookies.set(cookie, (cookieResponse) => {
@@ -120,8 +116,7 @@ export class GenericCookieHandler extends EventEmitter {
         if (!cookieResponse || error) {
           console.error('Failed to create cookie', error);
           if (callback) {
-            const errorMessage =
-              (error ? error.message : '') || 'Unknown error';
+            const errorMessage = (error ? error.message : '') || 'Unknown error';
             return callback(errorMessage, cookieResponse);
           }
           return;
@@ -159,7 +154,7 @@ export class GenericCookieHandler extends EventEmitter {
         .cookies.remove({
           name: name,
           url: url,
-          storeId: this.currentTab.cookieStoreId,
+          storeId: this.currentTab.cookieStoreId
         })
         .then(callback, function (e) {
           console.error('Failed to remove cookies', e);
@@ -172,15 +167,14 @@ export class GenericCookieHandler extends EventEmitter {
         {
           name: name,
           url: url,
-          storeId: this.currentTab.cookieStoreId,
+          storeId: this.currentTab.cookieStoreId
         },
         (cookieResponse) => {
           const error = this.browserDetector.getApi().runtime.lastError;
           if (!cookieResponse || error) {
             console.error('Failed to remove cookie', error);
             if (callback) {
-              const errorMessage =
-                (error ? error.message : '') || 'Unknown error';
+              const errorMessage = (error ? error.message : '') || 'Unknown error';
               return callback(errorMessage, cookieResponse);
             }
             return;
@@ -189,7 +183,7 @@ export class GenericCookieHandler extends EventEmitter {
           if (callback) {
             return callback(null, cookieResponse);
           }
-        },
+        }
       );
     }
   }

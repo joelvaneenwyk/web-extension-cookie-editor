@@ -21,7 +21,7 @@ import { PermissionHandler } from './interface/lib/permissionHandler.js';
   isFirefoxAndroid(function (response) {
     if (response) {
       const popupOptions = {
-        popup: '/interface/popup-mobile/cookie-list.html',
+        popup: '/interface/popup-mobile/cookie-list.html'
       };
       browserDetector.getApi().action.setPopup(popupOptions);
     }
@@ -30,7 +30,7 @@ import { PermissionHandler } from './interface/lib/permissionHandler.js';
     if (response) {
       console.log('Setting up iOS popup');
       const popupOptions = {
-        popup: '/interface/popup-mobile/cookie-list.html',
+        popup: '/interface/popup-mobile/cookie-list.html'
       };
       browserDetector.getApi().action.setPopup(popupOptions);
     }
@@ -68,27 +68,19 @@ import { PermissionHandler } from './interface/lib/permissionHandler.js';
       case 'getCurrentTab': {
         browserDetector
           .getApi()
-          .tabs.query(
-            { active: true, currentWindow: true },
-            function (tabInfo) {
-              sendResponse(tabInfo);
-            },
-          );
+          .tabs.query({ active: true, currentWindow: true }, function (tabInfo) {
+            sendResponse(tabInfo);
+          });
         return true;
       }
       case 'getAllCookies': {
         const getAllCookiesParams = {
-          url: request.params.url,
+          url: request.params.url
         };
         if (browserDetector.supportsPromises()) {
-          browserDetector
-            .getApi()
-            .cookies.getAll(getAllCookiesParams)
-            .then(sendResponse);
+          browserDetector.getApi().cookies.getAll(getAllCookiesParams).then(sendResponse);
         } else {
-          browserDetector
-            .getApi()
-            .cookies.getAll(getAllCookiesParams, sendResponse);
+          browserDetector.getApi().cookies.getAll(getAllCookiesParams, sendResponse);
         }
         return true;
       }
@@ -104,33 +96,28 @@ import { PermissionHandler } from './interface/lib/permissionHandler.js';
               (error) => {
                 console.error('Failed to create cookie', error);
                 sendResponse(error.message, null);
-              },
+              }
             );
         } else {
-          browserDetector
-            .getApi()
-            .cookies.set(request.params.cookie, (cookie) => {
-              if (cookie) {
-                sendResponse(null, cookie);
-              } else {
-                const error = browserDetector.getApi().runtime.lastError;
-                console.error('Failed to create cookie', error);
-                sendResponse(error.message, cookie);
-              }
-            });
+          browserDetector.getApi().cookies.set(request.params.cookie, (cookie) => {
+            if (cookie) {
+              sendResponse(null, cookie);
+            } else {
+              const error = browserDetector.getApi().runtime.lastError;
+              console.error('Failed to create cookie', error);
+              sendResponse(error.message, cookie);
+            }
+          });
         }
         return true;
       }
       case 'removeCookie': {
         const removeParams = {
           name: request.params.name,
-          url: request.params.url,
+          url: request.params.url
         };
         if (browserDetector.supportsPromises()) {
-          browserDetector
-            .getApi()
-            .cookies.remove(removeParams)
-            .then(sendResponse);
+          browserDetector.getApi().cookies.remove(removeParams).then(sendResponse);
         } else {
           browserDetector.getApi().cookies.remove(removeParams, sendResponse);
         }
@@ -146,7 +133,7 @@ import { PermissionHandler } from './interface/lib/permissionHandler.js';
       }
       case 'optionsChanged': {
         sendMessageToAllTabs('optionsChanged', {
-          from: request.params.from,
+          from: request.params.from
         });
         return true;
       }
@@ -163,9 +150,7 @@ import { PermissionHandler } from './interface/lib/permissionHandler.js';
       console.log('port message received: ' + (request.type || 'unknown'));
       switch (request.type) {
         case 'init_cookieHandler':
-          console.log(
-            'Devtool cookieHandler connected on tab ' + request.tabId,
-          );
+          console.log('Devtool cookieHandler connected on tab ' + request.tabId);
           connections[request.tabId] = port;
           return;
         case 'init_optionsHandler':
@@ -203,7 +188,7 @@ import { PermissionHandler } from './interface/lib/permissionHandler.js';
     if (tabId in connections) {
       connections[tabId].postMessage({
         type: type,
-        data: data,
+        data: data
       });
     }
   }

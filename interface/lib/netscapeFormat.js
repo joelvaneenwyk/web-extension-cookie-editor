@@ -39,7 +39,7 @@ export class NetscapeFormat {
         expiration: elements[4],
         name: elements[5],
         value: elements[6],
-        httpOnly: isHttpOnly,
+        httpOnly: isHttpOnly
       });
     }
     return cookies;
@@ -66,9 +66,7 @@ export class NetscapeFormat {
         // Create sessions with a 1 day TTL to avoid the cookie being
         // discarded when imported back. This is a compromise due to the
         // Netscape format. It is short enough but not too short.
-        expiration = Math.trunc(
-          new Date(Date.now() + 86400 * 1000).getTime() / 1000,
-        );
+        expiration = Math.trunc(new Date(Date.now() + 86400 * 1000).getTime() / 1000);
       } else if (!cookie.session && !!cookie.expirationDate) {
         expiration = Math.trunc(cookie.expirationDate);
       }

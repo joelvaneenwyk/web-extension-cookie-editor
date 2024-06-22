@@ -29,16 +29,12 @@ export class AdHandler {
   async isAdValid(selectedAd) {
     if (
       selectedAd.supportedBrowsers != Browsers.Any &&
-      !selectedAd.supportedBrowsers.includes(
-        this.browserDetector.getBrowserName(),
-      )
+      !selectedAd.supportedBrowsers.includes(this.browserDetector.getBrowserName())
     ) {
       return false;
     }
 
-    const dismissedAd = await this.storageHandler.getLocal(
-      this.getAdDismissKey(selectedAd.id),
-    );
+    const dismissedAd = await this.storageHandler.getLocal(this.getAdDismissKey(selectedAd.id));
     // No data means it was never dismissed
     if (dismissedAd === null) {
       return true;
@@ -46,10 +42,7 @@ export class AdHandler {
 
     // Only show a ad if it has not been dismissed in less than |ad.refreshDays|
     // days
-    if (
-      secondsInOneDay * selectedAd.refreshDays + new Date().getTime() >
-      dismissedAd.date
-    ) {
+    if (secondsInOneDay * selectedAd.refreshDays + new Date().getTime() > dismissedAd.date) {
       console.log('Not showing ad ' + selectedAd.id + ', it was dismissed.');
       return false;
     }
@@ -95,9 +88,7 @@ export class AdHandler {
       return false;
     }
 
-    const lastDismissedAd = await this.storageHandler.getLocal(
-      this.getLastDismissKey(),
-    );
+    const lastDismissedAd = await this.storageHandler.getLocal(this.getLastDismissKey());
     // No data means it was never dismissed
     if (lastDismissedAd === null) {
       return true;
@@ -146,12 +137,9 @@ export class AdHandler {
   async markAdAsDismissed(adObject) {
     await this.storageHandler.setLocal(
       this.getAdDismissKey(adObject.id),
-      this.createDismissObjV1(),
+      this.createDismissObjV1()
     );
-    await this.storageHandler.setLocal(
-      this.getLastDismissKey(),
-      this.createDismissObjV1(),
-    );
+    await this.storageHandler.setLocal(this.getLastDismissKey(), this.createDismissObjV1());
   }
 
   /**
@@ -178,7 +166,7 @@ export class AdHandler {
   createDismissObjV1() {
     return {
       version: 1,
-      date: Date.now(),
+      date: Date.now()
     };
   }
 }

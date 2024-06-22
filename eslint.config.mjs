@@ -1,5 +1,4 @@
 import js from '@eslint/js';
-import eslintConfigPrettier from 'eslint-config-prettier';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import globals from 'globals';
 
@@ -11,13 +10,29 @@ export default [
     languageOptions: {
       globals: {
         ...globals.browser,
-        ...globals.webextensions,
-      },
-
-      ecmaVersion: 'latest',
-      sourceType: 'module',
+        ...globals.webextensions
+      }
     },
+    rules: {
+      'prettier/prettier': [
+        'error',
+        {
+          semi: true,
+          trailingComma: 'none',
+          singleQuote: true,
+          endOfLine: 'auto',
+          tabWidth: 2,
+          useTabs: false,
+          experimentalTernaries: true,
+          printWidth: 100,
+          proseWrap: 'preserve',
+          htmlWhitespaceSensitivity: 'strict',
+          plugins: ['prettier-plugin-sh', 'prettier-plugin-toml', '@prettier/plugin-xml'],
+          parser: 'flow',
+          usePrettierrc: false
+        }
+      ]
+    }
   },
-  eslintPluginPrettierRecommended,
-  eslintConfigPrettier,
+  eslintPluginPrettierRecommended
 ];

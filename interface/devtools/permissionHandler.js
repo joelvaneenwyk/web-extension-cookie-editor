@@ -55,14 +55,10 @@ export class PermissionHandler {
   sendMessage(type, params) {
     const self = this;
     if (this.browserDetector.supportsPromises()) {
-      return this.browserDetector
-        .getApi()
-        .runtime.sendMessage({ type: type, params: params });
+      return this.browserDetector.getApi().runtime.sendMessage({ type: type, params: params });
     } else {
       return new Promise(function (resolve) {
-        self.browserDetector
-          .getApi()
-          .runtime.sendMessage({ type: type, params: params }, resolve);
+        self.browserDetector.getApi().runtime.sendMessage({ type: type, params: params }, resolve);
       });
     }
   }
