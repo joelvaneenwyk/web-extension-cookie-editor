@@ -16,6 +16,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.4.0",
+    "@prettier/plugin-xml": "^3.4.1",
     "@types/eslint__js": "^8.42.3",
     "@types/eslint-config-prettier": "^6.11.3",
     "eslint": "^9.4.0",
@@ -31,6 +32,8 @@
     "grunt-remove-logging": "^0.2.0",
     "grunt-replace": "^2.0.2",
     "prettier": "^3.3.2",
+    "prettier-plugin-sh": "^0.14.0",
+    "prettier-plugin-toml": "^2.0.1",
     "typescript": "^5.4.5"
   }
 }

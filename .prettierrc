@@ -4,6 +4,14 @@
   "singleQuote": true,
   "endOfLine": "auto",
   "tabWidth": 2,
+  "useTabs": false,
+  "experimentalTernaries": true,
   "printWidth": 80,
-  "proseWrap": "always"
+  "proseWrap": "preserve",
+  "plugins": [
+    "prettier-plugin-sh",
+    "prettier-plugin-toml",
+    "@prettier/plugin-xml"
+  ],
+  "htmlWhitespaceSensitivity": "strict"
 }
