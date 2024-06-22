@@ -21,7 +21,8 @@ body * {
   text-align: start;
 }
 
-.notransition *, .notransition *::before {
+.notransition *,
+.notransition *::before {
   -webkit-transition: none !important;
   -moz-transition: none !important;
   -o-transition: none !important;
@@ -228,7 +229,6 @@ button:focus {
     margin-top: 8px;
   }
 }
-
 
 #searchContainer {
   display: flex;
