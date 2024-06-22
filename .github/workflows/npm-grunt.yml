@@ -29,5 +29,5 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
-    - name: Test
-      run: grunt eslint
+    - name: Build
+      run: grunt
