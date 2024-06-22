@@ -5,7 +5,7 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
     'json-replace': {
       options: {
-        space: '\t',
+        space: '  ',
         replace: {
           version: '<%= pkg.version %>',
         },
